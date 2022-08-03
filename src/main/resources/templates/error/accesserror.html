@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Error</title>
+</head>
+<body>
+  <h1>あなたはログインしていません</h1>
+  <h1>ログインしてください</h1>
+  <form method="get" th:action="@{/login}">
+    <button class="btn btn-link" type="submit">ログイン画面に戻る</button>
+  </form>
+</body>
+</html>

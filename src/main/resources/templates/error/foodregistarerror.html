@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Error</title>
+</head>
+<body>
+  <h1>登録された食材はすでに賞味期限が切れています</h1>
+  <form method="get" th:action="@{/food/home}">
+    <button class="btn btn-link" type="submit">ホーム画面に戻る</button>
+  </form>
+</body>
+</html>

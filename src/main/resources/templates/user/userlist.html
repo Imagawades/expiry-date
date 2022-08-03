@@ -1,0 +1,57 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/userlayout}">
+<head>
+  <title>ユーザー一覧</title>
+  <!-- 個別CSS読込 -->
+  <link rel="stylesheet" th:href="@{/css/user/list.css}">
+</head>
+<body>
+  <div layout:fragment="content">
+    <div class="header border-bottom">
+      <h1 class="h2">ユーザー一覧画面</h1>
+    </div>
+    
+    <div>
+   <div class="mb-4">
+      <form id="user-search-form" method="post" th:action="@{/user/userlist}" class="form-inline" th:object="${FoodListForm}">
+        <div class="form-group" >
+          <label for="userId" class="mr-2">メールアドレス</label>
+          <input type="text" class="form-control" th:field="*{email}" placeholder="メールアドレス形式（...@...）で入力してください" required/>
+        </div>
+        <button class="btn btn-primary" type="submit">
+          検索
+        </button>
+      </form>
+    </div>
+
+    
+    </div>
+    
+    <!-- 一覧表示 -->
+    <div>
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th class="th-width">ユーザー名</th>
+            <th class="th-width">メールアドレス</th>
+            <th class="th-width">パスワード</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="item: ${userList}">
+            <td th:text="${item.userName}"></td>
+            <td th:text="${item.email}"></td>
+            <td th:text="${item.password}"></td>
+            <td>
+            <a class="btn btn-primary" th:href="@{'/user/userdetail/'+${item.userId}}">詳細</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- CSS読込 -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/login/login.css}">
+  <!-- JS読込 -->
+  <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+  <title>ログイン</title>
+</head>
+<body class="bg-light">
+  <div class="text-center">
+    
+    <h1 class="text-center" th:text="管理者ホーム画面"></h1>
+   
+    
+    
+    <!-- 登録ボタン -->
+    
+ 
+   <a href="/user/userlist" th:href="@{/user/userlist}">ユーザー一覧へ</a>
+   <a href="/user/userregistar" th:href="@{/user/userregistar}">ユーザー登録へ</a>
+    
+    
+    
+  
+   
+  </div>
+</body>
+</html>

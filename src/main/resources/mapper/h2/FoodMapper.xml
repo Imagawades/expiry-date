@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.repository.FoodMapper">
+
+<!-- マッピング定義 -->
+<resultMap type="com.example.domain.user.model.FoodAddDiff" id="food">
+
+<id column="id" property="Id"/>
+<result column="email" property="email"/>
+<result column="name" property="name"/>
+<result column="limitday" property="limitday"/>
+<result column="diff" property="diff"/>
+</resultMap>
+  <!-- 食材1件登録 -->
+  <insert id="insertOne">
+    insert into food(
+        Id
+      , email
+      , name
+      , limitday
+    )
+    values (
+        #{Id}
+      , #{email}
+      , #{name}
+      , #{limitday}
+    )
+  </insert>
+  
+  <!-- ユーザー検索 -->
+  <select id="reserchUser" resultType="MUser">
+    select 
+      *
+    from
+      m_user
+    where
+       email=#{email} AND password=#{password}
+  
+  </select>
+
+  <!-- 食材複数件取得 -->
+  <select id="findMany" resultType="Food">
+    select
+      *
+    from
+      food
+    where
+      email=#{email}
+  </select>
+  <!-- 食材全件取得 -->
+  <select id="findAllFoods" resultType="Food">
+    select
+      *
+    from
+      food
+    
+  </select>
+  
+  
+  <!-- 食材一件検索 -->
+  <select id="findOne" resultMap="food">
+    select
+      *
+    from
+      food
+      
+    where
+       id=#{Id}
+  </select>
+  
+  
+  
+  <!-- 食材削除 -->
+  <delete id="deleteOne">
+    delete from
+      food
+    where
+      Id=#{Id}
+   
+  </delete>
+  
+</mapper>

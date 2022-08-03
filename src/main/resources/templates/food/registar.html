@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- CSS読込 -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/user/signup.css}">
+  <!-- JS読込 -->
+  <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+  <title th:text="#{user.signup.title}"></title>
+</head>
+<body class="bg-light">
+
+  <form id="signup-form" method="post" action="/food/registar" class="form-signup" th:object="${signupForm}">
+    <h1 class="text-center" th:text="#{user.signup.title}"></h1>
+    
+    <!-- ユーザー名 -->
+    <div class="form-group">
+      <label for="Name" th:text="#{Name}"></label>
+      <input type="text" class="form-control" th:field="*{Name}" th:errorclass="is-invalid" required/>
+      <div class="invalid-feedback" th:errors="*{Name}"></div>
+    </div>
+    <!-- 賞味期限 -->
+    <div class="form-group">
+      <label for="Limitday" th:text="#{Limitday}"></label>
+      <input type="text" class="form-control" placeholder="yyyy/MM/ddの形式で入力してください" th:field="*{limitday}" th:errorclass="is-invalid"/>
+      <div class="invalid-feedback" th:errors="*{Limitday}"></div>
+    </div>
+    
+    <!-- 登録ボタン -->
+    <input type="submit" th:value="#{user.signup.btn}" class="btn btn-primary w-100 mt-3" />
+    
+  </form>
+</body>
+</html>

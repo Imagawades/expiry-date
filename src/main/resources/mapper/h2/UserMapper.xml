@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.repository.UserMapper">
+
+<!-- マッピング定義 -->
+<resultMap type="com.example.domain.user.model.MUser" id="user">
+<id column="userId" property="userId"/>
+<result column="email" property="email"/>
+<result column="password" property="password"/>
+
+</resultMap>
+
+  <!-- ユーザー1件登録 -->
+  <insert id="insertTwo">
+    insert into m_user(
+        userId
+      , userName
+      , email 
+      , password
+    )
+    values (
+        #{userId}
+      , #{userName}
+      , #{email}
+      , #{password}
+    )
+  </insert>
+
+  <!-- ユーザー複数件取得 -->
+  <select id="findMany" resultType="MUser">
+    select
+      *
+    from
+      m_user
+  </select>
+  <!-- ユーザー1件取得 -->
+  <select id="findOne" resultMap="user">
+    select
+      *
+    from
+      m_user
+    where
+      userId=#{userId}
+  </select>
+  
+  <!-- ユーザー更新 -->
+ <update id="updateOne">
+    update
+      m_user
+    set
+      userName=#{userName}
+     ,password=#{password}
+    where
+      userId=#{userId} 
+  </update>
+  <!-- ユーザー削除 -->
+  <delete id="deleteOne">
+    delete from 
+      m_user
+    where
+      userId=#{userId}
+  </delete>
+  
+   <select id="getReserchUsers" resultMap="user">
+    select
+      *
+    from
+      m_user
+    where
+       email=#{email}
+  </select>
+</mapper>
